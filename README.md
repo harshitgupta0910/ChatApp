@@ -1,106 +1,93 @@
-# Web-Based Chat Application
+# ChatApp
 
-This is Web-Based Chat-Application developed using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to register, log in, and chat with other users in real time.
+A full-stack real-time chat application built with the MERN stack, Socket.IO, React, Zustand, and Tailwind CSS.
 
-| Live Demo Video Link For How Real-Time Messaging Working using Socket.io | Application Hosted Link |
-|---|---|
-|https://res.cloudinary.com/arvindkumar/video/upload/v1712558423/Chat-App/Live_Test_Chat-App_y9zvof.mp4|https://chat-application-4krm.onrender.com/|
+## Tech Stack
 
----
-![Chat Application](frontend/src/assets/chat-app_2.png?raw=true "Chat-App Web Application")
----
----
-![Chat Application](frontend/src/assets/chat-app1.png?raw=true "Chat-App Web Application")
----
+- Backend: Node.js, Express, MongoDB, Mongoose, Socket.IO
+- Frontend: React (Vite), Zustand, Tailwind CSS, DaisyUI
+- Auth: JWT (HTTP-only cookie)
 
-## Features
+## Project Structure
 
-- User authentication: Users can register and log in securely.
-- Real-time messaging: Users can chat with each other in real-time.
-- Responsive design: The app is responsive and works well on both desktop and mobile devices.
-- Live notifications for new incoming messages.
-- Online user facility indicating which users are currently online.
+- `backend/` - API, auth, messaging, DB models, Socket.IO server
+- `frontend/` - React app (Vite)
+- `package.json` - root scripts for running/building the app
 
+## Prerequisites
 
-## Technologies Used
+- Node.js 18+
+- npm 9+
+- MongoDB connection string
 
-- MongoDB: NoSQL database for storing user data and chat messages.
-- Express.js: Web application framework for Node.js used to build the backend server.
-- React.js: JavaScript library for building user interfaces.
-- Node.js: JavaScript runtime environment for running server-side code.
-- Socket.io: Real-time engine for WebSockets to enable real-time communication between clients and server.
-- Tailwind/CSS: Markup and styling for the front end.
+## Environment Variables
 
----
+Create a `.env` file in the project root:
+
+```env
+MONGODB_URL=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=5000
+CLIENT_URL=http://localhost:3000
+NODE_ENV=development
+```
+
+Notes:
+- `MONGODB_URI` is also supported as an alternative to `MONGODB_URL`.
+- `CLIENT_URL` should match your frontend origin for Socket.IO CORS.
 
 ## Installation
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/arvindk2025/Chat-Application
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd Chat-Application
-   ```
-
-3. Install dependencies for both frontend and backend
-> For frontend dependencies Go to the frontend folder `Package.json` file
-  and see all dependencies for installation
+From the project root:
 
 ```bash
- npm i 
- npm i all_dependencies_name 
+npm install
+npm install --prefix frontend
 ```
 
+## Run In Development
 
-> For Backend Dependencies Go to the Chat-Application folder & refer directly available  `package.json` file:
-
-
+1. Start backend (from project root):
 
 ```bash
- npm i 
- npm i all_dependencies_name 
+npm run server
 ```
 
-4. Set up environment variables:
-   
-   - Create a `.env` file in the `Chat Application folder` directory.
-   - Define the following variables in the `.env` file:
-     ```
-       PORT=5000
-       MONGODB_URL=<your_mongodb_uri>
-       JWT_SECRET=<your_jwt_secret>
-       NODE_ENV=development
-       CLIENT_URL=http://localhost:3000
-       VITE_BACKEND_URL=http://localhost:5000
-     ```
+2. Start frontend (new terminal):
 
-5. Run the development server:
+```bash
+npm run dev --prefix frontend
+```
 
-   ```bash
-   npm run start
-   ```
+3. Open:
 
-6. Open your browser and navigate to `http://localhost:5000` to view the app functionality.
+```text
+http://localhost:3000
+```
 
----
+## Production Build + Run
 
-## Usage
+From project root:
 
-1. Register for an account or log in if you already have one.
-2. Once logged in, you'll be redirected to the chat interface.
-3. Start messaging with other users who are online in real-time.
+```bash
+npm run build
+npm start
+```
 
----
+This builds the frontend to `frontend/dist` and serves it from the backend server.
 
-## Contributing
+## Available Scripts (Root)
 
-Contributions are welcome! Feel free to open issues or pull requests for any improvements or new features you'd like to see added.
+- `npm run server` - run backend with nodemon
+- `npm start` - run backend with node
+- `npm run build` - install deps and build frontend
 
+## API Base Paths
 
+- `/api/auth`
+- `/api/messages`
+- `/api/user`
 
- 
+## License
+
+ISC
